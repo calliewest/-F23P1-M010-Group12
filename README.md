@@ -9,6 +9,6 @@
 ▀▀█ ▄▀░░ █▄ ░█
 
 -=-=-=-=-=-=-=-=-=-=-=-=-
-
+9/28
 >>> Fix "\\n" excel shenanigans
 >>> Figure compression alg. 
