@@ -10,4 +10,4 @@ def convert_s_to_b(p1: str):
             if p1[0:len(p1) - index] == item:
                 return str(bin_list[char_list.index(item)]) + p1.replace(item, "")
     return p1
-    pass
+    
