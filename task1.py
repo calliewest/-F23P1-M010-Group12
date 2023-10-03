@@ -1,4 +1,5 @@
 import pandas as pd #import the "tool" pandas to read excel file from the computer
+# it can also replace by import openpyxl, so we can use the libary in Python to helpo us work with excel films
 
 wb = pd.read_excel("23P1-M010-Group12.xlsx", dtype = str)# read the excel file according to the excel name
 
