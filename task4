@@ -1,0 +1,31 @@
+char_list = ["a", "b", "c", "d", "e", "f", "ab", "cdef"]
+bin_list = ["0", "10", "110", "1110", "11110", "111110", "1111110", "111111110"]
+
+
+def convert_s_to_b(p1: str):
+    for index in range(len(p1)):
+        for item in char_list:
+            if p1[0:len(p1) - index] == item:
+                return str(bin_list[char_list.index(item)]) + p1.replace(item, "")
+    return p1
+
+
+def read_text_and_write_binary(filename):
+    try:
+        with open(filename, 'r') as text_file:
+            text_content = text_file.read()
+
+        with open('BinOutput.txt', 'wb') as binary_file:
+            binary_content = "".join([convert_s_to_b(char) for char in text_content])
+
+            binary_file.write(bytes(binary_content, 'utf-8'))
+
+        print("Binary file 'BinOutput.txt' has been created.")
+
+    except FileNotFoundError:
+        print(f"File '{filename}' not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+read_text_and_write_binary('input.txt')  
