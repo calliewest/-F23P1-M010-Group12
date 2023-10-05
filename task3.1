@@ -1,0 +1,65 @@
+# Import the "task2" module
+import task2
+
+# TEST CODE
+char_list = ["a", "b", "c", "d", "e", "f", "ab", "cdef"]
+bin_list = ["000000", "000001", "000010", "000011", "1000000", "1000001", "1000010", "1000011"]
+
+def string_to_bin(p1: str):
+    # Initialize an empty list to store the binary values
+    result = []
+    
+    # Flag to check if conversion is complete
+    done = False
+    
+    # Continue until conversion is complete
+    while not done:
+        # Convert the first part of the string using task2.convert_s_to_b
+        p2 = task2.convert_s_to_b(p1)
+        
+        # If there are no more ',' characters in the converted string, conversion is complete
+        if "," not in p2:
+            done = True
+        else:
+            # Split the converted string into binary and remaining characters
+            split = p2.split(",")
+            
+            # Add the binary part to the result list
+            result.append(split[0])
+            
+            # Update p1 with the remaining characters for the next iteration
+            p1 = split[1]
+    
+    # Return the list of binary values
+    return result
+
+def bin_to_string(p1: str):
+    # Initialize an empty string to store the result
+    result = ""
+    
+    # Continue until p1 is empty
+    while len(p1) > 0:
+        # Check if the first character of p1 indicates a short or long character
+        if p1[0] == "1":
+            # Long character (7 bits)
+            # Find the index of the binary character in bin_list
+            index = bin_list.index(p1[0:7])
+            
+            # Add the corresponding character from char_list to the result
+            result = result + char_list[index]
+            
+            # Update p1 by removing the processed binary part (7 bits)
+            p1 = p1[7:]
+        else:
+            # Short character (6 bits)
+            # Find the index of the binary character in bin_list
+            index = bin_list.index(p1[0:6])
+            
+            # Add the corresponding character from char_list to the result
+            result = result + char_list[index]
+            
+            # Update p1 by removing the processed binary part (6 bits)
+            p1 = p1[6:]
+    
+    # Return the final result as a string
+    return result
