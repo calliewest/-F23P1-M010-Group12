@@ -8,6 +8,6 @@ def convert_s_to_b(p1: str):# the function name and the p1 is the parameter for 
         # loop through the character list and determine if the parameter(or part of it) is in the character list
         for item in char_list:
             if p1[0:len(p1) - index] == item:# find the binary value for each character and then return it
-                return str(bin_list[char_list.index(item)]) + p1.replace(item, "")
+                return str(bin_list[char_list.index(item)]) , p1.replace(item, "")
     return p1
     
